@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Synapse IPS — Security That Thinks Ahead</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <svg width="26" height="30" viewBox="0 0 36 42" fill="none">
+      <path d="M18 1L2 8.5V21.5C2 31.4 9.2 40.2 18 42C26.8 40.2 34 31.4 34 21.5V8.5L18 1Z" fill="#B81C29"/>
+      <circle cx="18" cy="22" r="5.5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+      <circle cx="18" cy="22" r="1.8" fill="rgba(255,255,255,.95)"/>
+      <line x1="18" y1="10" x2="18" y2="16" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="18" y1="28" x2="18" y2="34" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="6"  y1="22" x2="12" y2="22" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="24" y1="22" x2="30" y2="22" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="10" y1="13.5" x2="14.5" y2="18" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+      <line x1="21.5" y1="26" x2="26" y2="30.5" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+      <line x1="26" y1="13.5" x2="21.5" y2="18" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+      <line x1="14.5" y1="26" x2="10" y2="30.5" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+    </svg>
+    <span><b>Synapse</b> IPS</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#demo">Book a Demo</a></li>
+    <li><a href="#threats">Live Feed</a></li>
+    <li><a href="#spec">Specs</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#pricing" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- full-page network canvas -->
+  <canvas id="network-canvas"></canvas>
+
+  <!-- live status tag -->
+  <div class="net-live-tag">NETWORK PROTECTED</div>
+
+  <!-- floating event feed -->
+  <div class="net-blocked-badge" id="nbb"></div>
+
+  <!-- centred hero content -->
+  <div class="hero-content">
+    <div class="hero-badge">
+      v1.0.0 &mdash; Now Available
+    </div>
+
+    <h1 class="hero-title">
+      <span class="plain">Security</span>
+      <span class="grad">That Thinks</span>
+      <span class="muted">Ahead.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Synapse IPS monitors your network in real time using AI-powered neural anomaly detection &mdash; identifying and neutralising threats before they cause damage.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#demo" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book a Demo
+      </a>
+      <a href="#pricing" class="btn-secondary">See Pricing</a>
+    </div>
+
+    <img src="linkedin_banner.png" alt="Synapse IPS Dashboard" class="hero-banner-img">
+
+    <!-- live stats strip -->
+    <div class="net-strip">
+      <div class="nstrip-item">
+        <span class="nstrip-val r" id="ns-anom">45</span>
+        <span class="nstrip-label">Anomalies</span>
+      </div>
+      <div class="nstrip-item">
+        <span class="nstrip-val t" id="ns-blocked">6</span>
+        <span class="nstrip-label">IPs Blocked</span>
+      </div>
+      <div class="nstrip-item">
+        <span class="nstrip-val k" id="ns-flows">222</span>
+        <span class="nstrip-label">Active Flows</span>
+      </div>
+      <div class="nstrip-item">
+        <span class="nstrip-val k">18</span>
+        <span class="nstrip-label">Nodes Online</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section id="features" class="sec">
+  <div class="inner">
+    <div class="feat-intro">
+      <div>
+        <div class="sec-label rv">Core Capabilities</div>
+        <h2 class="sec-title rv d1">Built for<br>modern <span class="grad">threats</span></h2>
+      </div>
+      <p class="sec-sub rv d2">Every layer of Synapse IPS is engineered to stop intrusions before damage occurs — combining AI-driven detection with real-time prevention and zero compromise on performance.</p>
+    </div>
+    <div class="feat-grid rv d2">
+      <div class="fcard">
+        <div class="fcard-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3.5" stroke="#B81C29" stroke-width="1.3"/><path d="M10 2v2.5M10 15.5V18M2 10h2.5M15.5 10H18" stroke="#B81C29" stroke-width="1.2" stroke-linecap="round"/><path d="M4.5 4.5l1.8 1.8M13.7 13.7l1.8 1.8M4.5 15.5l1.8-1.8M13.7 6.3l1.8-1.8" stroke="#B81C29" stroke-width="1.1" stroke-linecap="round"/></svg></div>
+        <div class="fcard-title">Neural Anomaly Detection</div>
+        <p class="fcard-desc">AI models trained on network behaviour patterns identify deviations in real time — no signature files or rule updates required.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon t"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4.5" width="16" height="11" rx="1.5" stroke="#007A68" stroke-width="1.3"/><path d="M5 12l3-3.5 2.5 2.5L14 7.5l2.5 4" stroke="#007A68" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fcard-title">Deep Packet Inspection</div>
+        <p class="fcard-desc">Analyses TCP, UDP, and ICMP flows at packet level, extracting payload signatures other tools miss entirely.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L2.5 6V12c0 4.2 3.2 7.8 7.5 8.7C14.8 19.8 18 16.2 18 12V6L10 2Z" stroke="#B81C29" stroke-width="1.3"/><path d="M7 10.5l2.5 2.5L14 8" stroke="#B81C29" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fcard-title">Instant Auto-Quarantine</div>
+        <p class="fcard-desc">Suspicious IPs are blocked in milliseconds and placed in a quarantine list for review and release.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon b"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="11" rx="1.5" stroke="#2A5AB4" stroke-width="1.3"/><path d="M6 17h8M10 14v3" stroke="#2A5AB4" stroke-width="1.2" stroke-linecap="round"/><path d="M4.5 11L7 8l2.5 2.5L12 6l3.5 5" stroke="#2A5AB4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fcard-title">Live Analytics Dashboard</div>
+        <p class="fcard-desc">Real-time charts, anomaly history, protocol distribution, and quarantine log in one unified view.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon t"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v3.5M10 13.5V17M3 10h3.5M13.5 10H17" stroke="#007A68" stroke-width="1.2" stroke-linecap="round"/><circle cx="10" cy="10" r="3.5" stroke="#007A68" stroke-width="1.3"/><circle cx="10" cy="10" r="1.2" fill="#007A68"/></svg></div>
+        <div class="fcard-title">Lightweight Engine</div>
+        <p class="fcard-desc">Minimal CPU and memory overhead. Protection runs silently in the background without slowing your system.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" stroke="#B81C29" stroke-width="1.3"/><rect x="11" y="2" width="7" height="7" rx="1.5" stroke="#B81C29" stroke-width="1.3" opacity=".45"/><rect x="2" y="11" width="7" height="7" rx="1.5" stroke="#B81C29" stroke-width="1.3" opacity=".45"/><rect x="11" y="11" width="7" height="7" rx="1.5" stroke="#B81C29" stroke-width="1.3"/></svg></div>
+        <div class="fcard-title">Cross-Platform Support</div>
+        <p class="fcard-desc">Full native support for macOS and Windows — identical feature set, consistent interface on both platforms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ENGINE DEEP DIVE -->
+<section id="engine" class="sec">
+  <div class="inner">
+    <div class="sec-label rv">Technical Core</div>
+    <h2 class="sec-title rv d1">The Synapse <span class="grad">Engine</span></h2>
+    <p class="sec-sub rv d2">Beyond simple rules. Our proprietary Neural Anomaly Classifier (NAC) operates on a continuous learning loop to adapt to your network's unique signature.</p>
+    
+    <div class="engine-grid">
+      <div class="engine-card rv d1">
+        <span class="engine-step">Phase 01</span>
+        <h3 class="engine-title">Inertial Learning</h3>
+        <p class="engine-desc">The NAC monitors your network for 48 hours to establish a multi-dimensional baseline of "normal" behavior across all protocols and nodes.</p>
+      </div>
+      <div class="engine-card rv d2">
+        <span class="engine-step">Phase 02</span>
+        <h3 class="engine-title">Vector Analysis</h3>
+        <p class="engine-desc">Every packet is scored against 200+ behavioral vectors. Deviations are weighted by probability to eliminate false positives while catching true threats.</p>
+      </div>
+      <div class="engine-card rv d3">
+        <span class="engine-step">Phase 03</span>
+        <h3 class="engine-title">Adaptive Response</h3>
+        <p class="engine-desc">Identified threats trigger immediate quarantine. The NAC then updates its local weights to recognize similar attack vectors in the future.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPARISON -->
+<section id="comparison" class="sec sec-alt">
+  <div class="inner">
+    <div class="sec-label rv">Market Context</div>
+    <h2 class="sec-title rv d1">Why <span class="grad">Synapse</span>?</h2>
+    
+    <div class="comp-wrap rv d2">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="synapse-col">Synapse IPS</th>
+            <th class="trad-col">Traditional IPS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature-name">Detection Method</td>
+            <td class="synapse-col">Neural Anomaly Detection (AI)</td>
+            <td class="trad-col">Static Signatures / Rules</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Zero-Day Protection</td>
+            <td class="synapse-col">Instant (Behavioral)</td>
+            <td class="trad-col">Delayed (Requires Update)</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Resource Overhead</td>
+            <td class="synapse-col">Minimal (< 1% CPU)</td>
+            <td class="trad-col">High (Large Rule Sets)</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Update Frequency</td>
+            <td class="synapse-col">Autonomous Learning</td>
+            <td class="trad-col">Daily / Weekly Downloads</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Encrypted Traffic</td>
+            <td class="synapse-col">Flow Pattern Analysis</td>
+            <td class="trad-col">Requires Decryption</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section id="pricing" class="sec sec-alt">
+  <div class="inner">
+    <div class="pricing-top">
+      <div class="sec-label rv">Pricing</div>
+      <h2 class="sec-title rv d1">Simple, transparent <span class="grad">pricing</span></h2>
+      <p class="sec-sub rv d2">Choose the plan that fits your network. Every plan includes the full Synapse IPS engine — no hidden fees, no feature gates on core protection.</p>
+    </div>
+
+    <div style="display:flex;justify-content:center;" class="rv d2">
+      <div class="billing-toggle">
+        <button class="btog active" id="btog-m" onclick="setBilling('monthly')">Monthly</button>
+        <button class="btog" id="btog-a" onclick="setBilling('annual')">Annual <span class="save-badge">Save 20%</span></button>
+      </div>
+    </div>
+
+    <div class="pricing-grid rv d3">
+
+      <!-- SOLO -->
+      <div class="price-card">
+        <div class="price-plan dark">Solo</div>
+        <div class="price-amount">
+          <span class="price-currency">$</span>
+          <span class="price-num" id="p-solo">50</span>
+          <span class="price-period dark">/ month</span>
+        </div>
+        <div class="price-annual-note teal" id="n-solo"></div>
+        <p class="price-desc dark-sep">For individual security engineers who need real-time AI protection on a single machine.</p>
+        <div class="price-features">
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>1 protected device</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Neural anomaly detection</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Deep packet inspection</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Auto-quarantine &amp; IP blocking</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Live dashboard</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>macOS &amp; Windows</span></div>
+          <div class="pf dk"><div class="pf-check off"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2.5 6.5l4-4M6.5 6.5l-4-4" stroke="#C4C8D8" stroke-width="1.3" stroke-linecap="round"/></svg></div><span class="dim">Multi-device coverage</span></div>
+          <div class="pf dk"><div class="pf-check off"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2.5 6.5l4-4M6.5 6.5l-4-4" stroke="#C4C8D8" stroke-width="1.3" stroke-linecap="round"/></svg></div><span class="dim">Priority support</span></div>
+        </div>
+        <a href="#" class="price-btn outline">Get Started</a>
+      </div>
+
+      <!-- TEAM — featured (dark card) -->
+      <div class="price-card featured">
+        <div class="price-tag">Most Popular</div>
+        <div class="price-plan light">Team</div>
+        <div class="price-amount">
+          <span class="price-currency light">$</span>
+          <span class="price-num red" id="p-team">120</span>
+          <span class="price-period light">/ month</span>
+        </div>
+        <div class="price-annual-note teal-light" id="n-team"></div>
+        <p class="price-desc light-sep">For security teams protecting multiple machines with centralised control and per-device visibility.</p>
+        <div class="price-features">
+          <div class="pf lt"><div class="pf-check on-lt"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Up to 5 protected devices</span></div>
+          <div class="pf lt"><div class="pf-check on-lt"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Neural anomaly detection</span></div>
+          <div class="pf lt"><div class="pf-check on-lt"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Deep packet inspection</span></div>
+          <div class="pf lt"><div class="pf-check on-lt"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Auto-quarantine &amp; IP blocking</span></div>
+          <div class="pf lt"><div class="pf-check on-lt"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Centralised live dashboard</span></div>
+          <div class="pf lt"><div class="pf-check on-lt"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>macOS &amp; Windows</span></div>
+          <div class="pf lt"><div class="pf-check on-lt"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Multi-device coverage</span></div>
+          <div class="pf lt"><div class="pf-check on-lt"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Email &amp; priority support</span></div>
+        </div>
+        <a href="#" class="price-btn white-solid">Start Free Trial</a>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="price-card">
+        <div class="price-plan dark">Enterprise</div>
+        <div class="price-amount">
+          <span class="price-num muted">Custom</span>
+        </div>
+        <div class="price-annual-note muted">Billed annually</div>
+        <p class="price-desc dark-sep">For organisations needing network-wide deployment, SIEM integration, and dedicated engineering support.</p>
+        <div class="price-features">
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Unlimited devices</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>All Team features</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>SIEM integration</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Custom AI model training</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Private cloud deployment</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Dedicated support engineer</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>SLA guarantee</span></div>
+          <div class="pf dk"><div class="pf-check on"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span>Onboarding &amp; training</span></div>
+        </div>
+        <a href="#" class="price-btn red-solid">Contact Sales &rarr;</a>
+      </div>
+
+    </div>
+    <div class="pricing-note rv d4">All plans include a <span>14-day free trial</span> &middot; No credit card required &middot; Cancel anytime</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="inner">
+    <div class="faq-layout">
+      <div>
+        <div class="sec-label rv">FAQ</div>
+        <h2 class="sec-title rv d1">Common<br><span class="grad">questions</span></h2>
+        <p class="sec-sub rv d2" style="margin-top:16px;">Can't find your answer? <a href="#" style="color:var(--red);font-weight:400;">Contact us &rarr;</a></p>
+      </div>
+      <div class="faq-list rv d1">
+        <div class="faq-search-wrap">
+          <svg class="faq-search-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><line x1="18" y1="18" x2="12.35" y2="12.35"/></svg>
+          <input type="search" class="faq-search" placeholder="Search questions..." id="faq-search-input" onkeyup="filterFaq()">
+        </div>
+        <div id="faq-items-container">
+          <div class="faq-item open">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">What exactly is included in the $50/month Solo plan?</span>
+              <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="faq-a">The Solo plan gives you the full Synapse IPS engine on one machine — neural anomaly detection, deep packet inspection, automatic IP quarantine, the live dashboard, and support for both macOS and Windows. Everything you need to protect a single device with enterprise-grade AI.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Is there a free trial before I commit?</span>
+              <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="faq-a">Yes — all plans include a 14-day free trial with no credit card required. You get full access to every feature in your chosen plan from day one.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How does the annual billing discount work?</span>
+              <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="faq-a">When you choose annual billing, you pay for 10 months and get 2 months free — a 20% saving. The Solo plan drops from $50/month to $40/month, and the Team plan from $120/month to $96/month.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Does Synapse IPS require any special hardware?</span>
+              <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="faq-a">No. Synapse IPS is a software-only solution. It runs directly on your machine using the existing network interface — no dedicated hardware or external appliances required.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">What makes AI detection better than signature-based tools?</span>
+              <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="faq-a">Signature-based tools only detect known threats. Synapse IPS learns normal behaviour on your network and flags deviations — catching zero-day threats, novel attack patterns, and suspicious behaviour no signature has ever seen.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Can I cancel or change my plan at any time?</span>
+              <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="faq-a">Absolutely. You can upgrade, downgrade, or cancel at any time from your account dashboard. Monthly plans cancel at the end of the billing period with no penalties.</div>
+          </div>
+        </div>
+        <div id="faq-no-results" style="display:none; padding: 20px; color: var(--t3); font-style: italic;">No matching questions found.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THREAT FEED -->
+<section id="threats" class="sec sec-alt">
+  <div class="inner">
+    <div class="sec-label rv">Live Intelligence</div>
+    <h2 class="sec-title rv d1">Threat feed &amp; <span class="grad">protocol</span> data</h2>
+    <div class="feed-layout">
+      <div class="feed-panel rv d1">
+        <div class="feed-hdr"><div class="feed-hdr-t">// Live Threat Log</div><div class="live-dot"></div></div>
+        <div class="feed-entries" id="feed-entries"></div>
+      </div>
+      <div class="proto-panel rv d2">
+        <div class="proto-hdr">// Protocol Distribution</div>
+        <div class="proto-body">
+          <div class="proto-donut-row">
+            <div class="donut-wrap">
+              <svg width="120" height="120" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="42" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="14"/>
+                <circle cx="60" cy="60" r="42" fill="none" stroke="#B81C29" stroke-width="14" stroke-dasharray="196 264" stroke-dashoffset="66" stroke-linecap="butt"/>
+                <circle cx="60" cy="60" r="42" fill="none" stroke="#2A5AB4" stroke-width="14" stroke-dasharray="68 264" stroke-dashoffset="-130" stroke-linecap="butt"/>
+              </svg>
+              <div class="donut-c"><div class="dc-n">456</div><div class="dc-l">Packets</div></div>
+            </div>
+            <div class="pl">
+              <div class="pr"><div class="pdot" style="background:#B81C29"></div><div class="pname">TCP</div><div class="pbar"><div class="pfill" style="width:74%;background:#B81C29"></div></div><div class="pcnt">337</div></div>
+              <div class="pr"><div class="pdot" style="background:#2A5AB4"></div><div class="pname">UDP</div><div class="pbar"><div class="pfill" style="width:26%;background:#2A5AB4"></div></div><div class="pcnt">119</div></div>
+              <div class="pr"><div class="pdot" style="background:#D4960E"></div><div class="pname">ICMP</div><div class="pbar"><div class="pfill" style="width:0%;background:#D4960E"></div></div><div class="pcnt">0</div></div>
+              <div class="pr"><div class="pdot" style="background:#C4C8D8"></div><div class="pname">Other</div><div class="pbar"><div class="pfill" style="width:0%;background:#C4C8D8"></div></div><div class="pcnt">0</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="proto-stats">
+          <div class="pst"><div class="pst-v" style="color:var(--red)" id="ps-a">45</div><div class="pst-l">Anomalies</div></div>
+          <div class="pst"><div class="pst-v" style="color:var(--teal)" id="ps-ac">222</div><div class="pst-l">Active Flows</div></div>
+          <div class="pst"><div class="pst-v" style="color:var(--t1)" id="ps-bl">6</div><div class="pst-l">Blocked IPs</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SPECS -->
+<section id="spec" class="sec">
+  <div class="inner">
+    <div class="sec-label rv">Technical Reference</div>
+    <h2 class="sec-title rv d1">System specs &amp; <span class="grad">capabilities</span></h2>
+    <div class="spec-layout">
+      <div class="spec-glass rv d1">
+        <div class="spec-glass-h">// System Specifications</div>
+        <div class="srow"><span class="sk">Version</span><span class="sv t">v1.0.0 &mdash; Stable</span></div>
+        <div class="srow"><span class="sk">Detection Engine</span><span class="sv">Neural Anomaly Classifier</span></div>
+        <div class="srow"><span class="sk">Supported Protocols</span><span class="sv">TCP / UDP / ICMP</span></div>
+        <div class="srow"><span class="sk">Platforms</span><span class="sv">macOS / Windows</span></div>
+        <div class="srow"><span class="sk">Operating Mode</span><span class="sv g">Real-time / Live</span></div>
+        <div class="srow"><span class="sk">Signature-based</span><span class="sv r">No &mdash; AI only</span></div>
+        <div class="srow"><span class="sk">Auto-Quarantine</span><span class="sv t">Enabled</span></div>
+        <div class="srow"><span class="sk">Dashboard</span><span class="sv">Live Web UI</span></div>
+        <div class="srow"><span class="sk">Packet Inspection</span><span class="sv">Deep Packet (DPI)</span></div>
+        <div class="srow"><span class="sk">License</span><span class="sv a">Commercial</span></div>
+      </div>
+      <div class="spec-glass rv d2">
+        <div class="spec-glass-h">// Feature Checklist &mdash; v1.0.0</div>
+        <div class="feat-chk">
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">Real-time packet capture and analysis</span><span class="fci-b s">Stable</span></div>
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">AI-powered neural anomaly detection</span><span class="fci-b n">New</span></div>
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">Automatic IP quarantine and blocking</span><span class="fci-b s">Stable</span></div>
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">Live dashboard with anomaly history</span><span class="fci-b n">New</span></div>
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">Protocol breakdown (TCP / UDP / ICMP)</span><span class="fci-b s">Stable</span></div>
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">macOS native (Apple Silicon &amp; Intel)</span><span class="fci-b s">Stable</span></div>
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">Windows cross-platform support</span><span class="fci-b n">New</span></div>
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">Low-overhead background engine</span><span class="fci-b s">Stable</span></div>
+          <div class="fci"><div class="fci-c"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#007A68" stroke-width="1.4" stroke-linecap="round"/></svg></div><span class="fci-t">Per-flow anomaly scoring</span><span class="fci-b n">New</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PLATFORMS -->
+<section id="platforms" class="sec sec-alt">
+  <div class="inner">
+    <div class="sec-label rv">Compatibility</div>
+    <h2 class="sec-title rv d1">Runs where you <span class="grad">need it</span></h2>
+    <div class="plat-grid">
+      <div class="platcard rv d1">
+        <div class="platcard-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C5.6 2 2 5.6 2 10s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14.4A6.4 6.4 0 1 1 10 3.6a6.4 6.4 0 0 1 0 12.8z" fill="#4A5068"/><path d="M10 6v4l2.5 2" stroke="#4A5068" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <div class="platcard-name">macOS</div>
+        <p class="platcard-desc">Native support for Apple Silicon and Intel Macs. Integrates at the kernel-level network stack.</p>
+        <div class="platcard-status live">Live in v1.0.0</div>
+      </div>
+      <div class="platcard rv d2">
+        <div class="platcard-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" fill="#4A5068"/><rect x="11" y="2" width="7" height="7" fill="#4A5068" opacity=".5"/><rect x="2" y="11" width="7" height="7" fill="#4A5068" opacity=".5"/><rect x="11" y="11" width="7" height="7" fill="#4A5068"/></svg></div>
+        <div class="platcard-name">Windows</div>
+        <p class="platcard-desc">Full Windows integration with WinPcap/Npcap. Same features, same interface, same protection.</p>
+        <div class="platcard-status live">New in v1.0.0</div>
+      </div>
+      <div class="platcard rv d3">
+        <div class="platcard-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#C4C8D8" stroke-width="1.3"/><circle cx="10" cy="10" r="3.5" stroke="#C4C8D8" stroke-width="1.3" stroke-dasharray="2.5 2"/></svg></div>
+        <div class="platcard-name">Linux</div>
+        <p class="platcard-desc">libpcap-based Linux support is planned for v1.1.0. Sign up to be notified on release.</p>
+        <div class="platcard-status soon">Coming in v1.1.0</div>
+      </div>
+      <div class="platcard rv d4">
+        <div class="platcard-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" stroke="#C4C8D8" stroke-width="1.3"/><path d="M10 6v8M6 10h8" stroke="#C4C8D8" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <div class="platcard-name">Enterprise</div>
+        <p class="platcard-desc">Network-wide deployment, SIEM integration, and custom cloud deployments. Contact sales.</p>
+        <div class="platcard-status soon">Roadmap</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK A DEMO -->
+<section id="demo" class="sec">
+  <div class="inner">
+    <div class="demo-wrap rv">
+      <div class="sec-label rv" style="justify-content:center; margin-bottom: 24px;">Technical Walkthrough</div>
+      <h2 class="demo-title rv d1">Experience the <span class="grad">Synapse</span> Intelligence</h2>
+      <p class="demo-sub rv d2">Schedule a 15-minute deep-dive with a lead security engineer. We'll walk through the dashboard, simulated threat detection, and system integration.</p>
+      
+      <div class="rv d3">
+        <!-- INSTRUCTIONS FOR ABBAS: 
+             1. Go to your Google Calendar.
+             2. Click "Create" > "Appointment Schedule".
+             3. Set up your availability.
+             4. Click "Share" and copy the link.
+             5. Replace the "#" in the href below with your link.
+        -->
+        <a href="https://calendar.app.google/ujS4gPXEA9Yi5S4k9" target="_blank" class="demo-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+          Schedule via Google Calendar
+        </a>
+      </div>
+      
+      <div class="demo-note rv d4">
+        Available Monday — Friday &bull; Timezone: UTC
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section id="cta" class="sec sec-alt">
+  <div class="cta-wrap">
+    <div class="cta-box rv">
+      <div class="cta-glow"></div>
+      <div class="cta-title">Start your<br><span class="grad">free trial</span><br>today.</div>
+      <p class="cta-sub">14 days free, no credit card required. Full access to every feature in your chosen plan from day one.</p>
+      <div class="cta-btns">
+        <a href="#pricing" class="btn-primary" style="background:#fff;color:var(--t1);">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v9M4 7.5L7 11l3-3.5M2 12.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Plans &amp; Pricing
+        </a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.55);padding:14px 28px;border-radius:8px;font-size:14px;font-weight:400;border:1px solid rgba(255,255,255,0.15);cursor:pointer;transition:all .2s;">Contact Sales &rarr;</a>
+      </div>
+      <div class="cta-note">Solo from <span>$50 / month</span> &middot; Team from $120 / month &middot; Cancel anytime</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-brand"><b>Synapse</b> IPS</div>
+      <div class="ft-tag">Security That Thinks Ahead</div>
+      <p class="ft-desc">An AI-powered Intrusion Prevention System for real-time network threat detection and automatic response.</p>
+      
+      <div class="ft-newsletter">
+        <div class="fc-h">Newsletter</div>
+        <p class="ft-desc" style="margin-bottom:8px;">Get the latest security intelligence updates.</p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" class="newsletter-input" placeholder="email@address.com" required id="newsletter-email">
+          <button type="submit" class="newsletter-btn">Join</button>
+        </form>
+        <div class="newsletter-msg" id="newsletter-msg">Thanks for joining our threat feed!</div>
+      </div>
+    </div>
+    <div>
+      <div class="fc-h">Product</div>
+      <ul class="fc-l"><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#spec">Specifications</a></li><li><a href="#platforms">Platforms</a></li></ul>
+    </div>
+    <div>
+      <div class="fc-h">Developer</div>
+      <ul class="fc-l"><li><a href="#">GitHub</a></li><li><a href="#">Documentation</a></li><li><a href="#">Changelog</a></li><li><a href="#">Release Notes</a></li></ul>
+    </div>
+    <div>
+      <div class="fc-h">Company</div>
+      <ul class="fc-l"><li><a href="#">LinkedIn</a></li><li><a href="#faq">FAQ</a></li><li><a href="#">Contact Sales</a></li><li><a href="#">Privacy Policy</a></li></ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span class="ft-copy">&copy; 2025 Synapse IPS. All rights reserved.</span>
+    <div class="ft-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></div>
+    <span class="ft-ver">v1.0.0 &mdash; Stable</span>
+  </div>
+</footer>
+
+<script>
+/* ── BILLING TOGGLE ── */
+const prices={monthly:{solo:50,team:120},annual:{solo:40,team:96}};
+let mode='monthly';
+function setBilling(m){
+  mode=m;
+  document.getElementById('btog-m').classList.toggle('active',m==='monthly');
+  document.getElementById('btog-a').classList.toggle('active',m==='annual');
+  const p=prices[m];
+  document.getElementById('p-solo').textContent=p.solo;
+  document.getElementById('p-team').textContent=p.team;
+  document.getElementById('n-solo').textContent=m==='annual'?'Billed $'+(p.solo*12)+' / year — 2 months free':'';
+  document.getElementById('n-team').textContent=m==='annual'?'Billed $'+(p.team*12)+' / year — 2 months free':'';
+}
+
+/* ── FAQ ── */
+function toggleFaq(el){
+  const item=el.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+/* ── COUNTERS ── */
+(function(){
+  function rnd(v,r){return Math.max(0,v+Math.floor((Math.random()-.4)*r));}
+  let a=45,f=62,ac=222,bl=6;
+  setInterval(()=>{
+    a=rnd(a,3);f=rnd(f,4);ac=rnd(ac,8);bl=rnd(bl,1);
+    ['hs-a','ps-a'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=a;});
+    const hf=document.getElementById('hs-f');if(hf)hf.textContent=f;
+    ['hs-ac','ps-ac'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=ac;});
+    const b=document.getElementById('ps-bl');if(b)b.textContent=bl;
+  },2000);
+})();
+
+/* ── THREAT LOG ── */
+(function(){
+  const ips=['45.33.32.156','172.217.168.74','192.168.11.1','142.251.143.106','151.101.1.229','10.0.0.5','8.8.4.4','172.64.146.215'];
+  const pros=['TCP','UDP','TCP','TCP','ICMP'];
+  const reasons=['Port scan','Flood pattern','Anomaly 0.91','Normal traffic','DNS query','Anomaly 0.88','Web traffic'];
+  const wrap=document.getElementById('feed-entries');
+  function add(){
+    const bl=Math.random()>.32;
+    const ip=ips[Math.floor(Math.random()*ips.length)];
+    const pr=pros[Math.floor(Math.random()*pros.length)];
+    const rs=bl?reasons[Math.floor(Math.random()*4)]:reasons[4+Math.floor(Math.random()*3)];
+    const now=new Date();
+    const ts=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0')+':'+now.getSeconds().toString().padStart(2,'0');
+    const el=document.createElement('div');
+    el.className=`fe ${bl?'bl':'al'}`;
+    el.style.cssText='opacity:0;transform:translateX(-10px);transition:opacity .4s ease,transform .4s ease;';
+    el.innerHTML=`<span class="fe-time">${ts}</span><span class="fe-type ${bl?'b':'a'}">${bl?'BLOCK':'ALLOW'}</span><span class="fe-ip">${ip}</span><span class="fe-proto">${pr}</span><span class="fe-reason">${rs}</span>`;
+    wrap.insertBefore(el,wrap.firstChild);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform='none';}));
+    while(wrap.children.length>14)wrap.removeChild(wrap.lastChild);
+  }
+  for(let i=0;i<10;i++)add();
+  setInterval(add,1500);
+})();
+
+/* ── FAQ SEARCH ── */
+function filterFaq() {
+  const input = document.getElementById('faq-search-input');
+  const filter = input.value.toLowerCase();
+  const container = document.getElementById('faq-items-container');
+  const items = container.getElementsByClassName('faq-item');
+  let visibleCount = 0;
+
+  for (let i = 0; i < items.length; i++) {
+    const question = items[i].querySelector('.faq-q-text').textContent.toLowerCase();
+    const answer = items[i].querySelector('.faq-a').textContent.toLowerCase();
+    
+    if (question.includes(filter) || answer.includes(filter)) {
+      items[i].style.display = "";
+      visibleCount++;
+    } else {
+      items[i].style.display = "none";
+    }
+  }
+  
+  document.getElementById('faq-no-results').style.display = visibleCount === 0 ? "block" : "none";
+}
+
+/* ── NEWSLETTER ── */
+function handleNewsletter(e) {
+  e.preventDefault();
+  const email = document.getElementById('newsletter-email');
+  const msg = document.getElementById('newsletter-msg');
+  
+  if (email.value) {
+    email.disabled = true;
+    e.target.querySelector('button').disabled = true;
+    msg.style.display = 'block';
+    email.value = '';
+    
+    setTimeout(() => {
+      msg.style.opacity = '0';
+      setTimeout(() => {
+        msg.style.display = 'none';
+        msg.style.opacity = '1';
+        email.disabled = false;
+        e.target.querySelector('button').disabled = false;
+      }, 500);
+    }, 3000);
+  }
+}
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});
+},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ═══════════ FULL-PAGE NETWORK THREAT MAP ═══════════ */
+(function(){
+  const cv  = document.getElementById('network-canvas');
+  if(!cv) return;
+  const ctx = cv.getContext('2d');
+  let W, H, nodes = [], tick = 0, totalBlocked = 6, activeThreats = 0, anomalies = 45, flows = 222;
+  const RED='#B81C29', TEAL='#007A68', DARK='#2A2E3A';
+
+  /* floating labels that animate independently */
+  const floatLabels = [];
+
+  function resize(){
+    W = cv.width  = window.innerWidth;
+    H = cv.height = cv.parentElement.offsetHeight || window.innerHeight;
+    buildNodes();
+  }
+
+  function buildNodes(){
+    nodes = [];
+    const cx = W*.5, cy = H*.5;
+    /* servers */
+    for(let i=0;i<4;i++){
+      const a=(i/4)*Math.PI*2, d=45+Math.random()*45;
+      push(cx+Math.cos(a)*d, cy+Math.sin(a)*d, 11, 'server');
+    }
+    /* devices */
+    for(let i=0;i<10;i++){
+      const a=Math.random()*Math.PI*2, d=120+Math.random()*110;
+      push(cx+Math.cos(a)*d, cy+Math.sin(a)*d, 7, 'device');
+    }
+    /* endpoints – spread wide */
+    for(let i=0;i<18;i++){
+      const a=Math.random()*Math.PI*2;
+      const d=220+Math.random()*Math.min(W,H)*.32;
+      push(
+        Math.max(20, Math.min(W-20, cx+Math.cos(a)*d)),
+        Math.max(20, Math.min(H-20, cy+Math.sin(a)*d)),
+        5, 'end'
+      );
+    }
+  }
+  function push(x,y,r,type){
+    nodes.push({x,y,
+      vx:(Math.random()-.5)*.28, vy:(Math.random()-.5)*.28,
+      r, type, pulse:Math.random()*Math.PI*2,
+      threat:false, threatAge:0, blocked:false, blockAge:0, blockFadeAge:0,
+      showBlock:false, showThreat:false
+    });
+  }
+
+  const FEED_IPS=[
+    '142.251.143.106','172.64.146.215','45.33.32.156',
+    '151.101.1.229','192.168.11.1','172.217.168.74',
+    '104.21.45.231','8.8.4.4','10.0.0.55','203.0.113.77',
+    '198.51.100.22','185.220.101.5','91.108.4.10','79.124.62.41',
+  ];
+
+  function spawnThreat(){
+    /* try to spawn up to 3 at once for bursts */
+    const pool=nodes.filter(n=>n.type==='end'&&!n.threat&&!n.blocked);
+    if(!pool.length) return;
+    const count = Math.random()<.4 ? Math.min(2,pool.length) : 1;
+    for(let i=0;i<count;i++){
+      const n=pool.splice(Math.floor(Math.random()*pool.length),1)[0];
+      n.threat=true; n.threatAge=0; n.blocked=false; n.blockAge=0;
+      n.blockFadeAge=0; n.showBlock=false; n.showThreat=true;
+      activeThreats++;
+      anomalies++;
+    }
+    syncCounters();
+  }
+
+  function syncCounters(){
+    const a=document.getElementById('ns-anom');    if(a) a.textContent=anomalies;
+    const b=document.getElementById('ns-blocked'); if(b) b.textContent=totalBlocked;
+    const f=document.getElementById('ns-flows');   if(f) f.textContent=flows;
+  }
+
+  function addFeed(ip, blocked){
+    const wrap=document.getElementById('nbb'); if(!wrap) return;
+    const el=document.createElement('div');
+    el.className='nbb-item';
+    el.innerHTML=`<div class="nbb-dot ${blocked?'r':'t'}"></div>`+
+                 `<span class="nbb-ip">${ip}</span>`+
+                 `<span class="nbb-tag ${blocked?'b':'a'}">${blocked?'BLOCKED':'ALLOWED'}</span>`;
+    el.style.cssText='opacity:0;transform:translateX(12px);transition:opacity .3s ease,transform .3s ease;';
+    wrap.insertBefore(el, wrap.firstChild);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform='none';}));
+    while(wrap.children.length>4) wrap.removeChild(wrap.lastChild);
+  }
+
+  /* spawn thread — every 1000 ms */
+  setInterval(()=>{
+    spawnThreat();
+    /* also add a random ALLOWED entry 30% of the time */
+    if(Math.random()<.3) addFeed(FEED_IPS[Math.floor(Math.random()*FEED_IPS.length)],false);
+  }, 1000);
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    tick++;
+
+    if(tick%70===0){ flows=Math.max(190, flows+Math.floor((Math.random()-.38)*5)); syncCounters(); }
+
+    /* update nodes */
+    nodes.forEach(n=>{
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<n.r+6||n.x>W-n.r-6) n.vx*=-1;
+      if(n.y<n.r+6||n.y>H-n.r-6) n.vy*=-1;
+      n.pulse+=.038;
+
+      if(n.threat&&!n.blocked){
+        n.threatAge++;
+        /* auto-block after ~2s (120 frames) */
+        if(n.threatAge>120){
+          n.blocked=true; n.blockAge=0; n.blockFadeAge=0; n.showBlock=true;
+          activeThreats=Math.max(0,activeThreats-1);
+          totalBlocked++;
+          syncCounters();
+          addFeed(FEED_IPS[Math.floor(Math.random()*FEED_IPS.length)], true);
+          /* floating BLOCKED label */
+          floatLabels.push({x:n.x, y:n.y-n.r-14, text:'BLOCKED', color:TEAL, age:0, maxAge:80});
+        }
+      }
+      if(n.blocked){
+        n.blockAge++;
+        if(n.blockAge>100){
+          n.threat=false; n.blocked=false;
+          n.blockAge=0; n.threatAge=0; n.showBlock=false; n.showThreat=false;
+        }
+      }
+    });
+
+    /* update float labels */
+    for(let i=floatLabels.length-1;i>=0;i--){
+      floatLabels[i].age++;
+      floatLabels[i].y -= .4; /* drift upward */
+      if(floatLabels[i].age > floatLabels[i].maxAge) floatLabels.splice(i,1);
+    }
+
+    /* ── EDGES ── */
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        const dx=a.x-b.x, dy=a.y-b.y, d=Math.sqrt(dx*dx+dy*dy);
+        const maxD=a.type==='server'||b.type==='server'?210:155;
+        if(d>maxD) continue;
+
+        const isThreat=(a.threat||b.threat)&&!(a.blocked||b.blocked);
+        const isBlock=a.blocked||b.blocked;
+        const alpha=1-d/maxD;
+
+        ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+        ctx.strokeStyle=isThreat?`rgba(184,28,41,${alpha*.5})`
+                       :isBlock ?`rgba(0,122,104,${alpha*.32})`
+                       :         `rgba(168,174,192,${alpha*.2})`;
+        ctx.lineWidth=isThreat?1.4:.55; ctx.stroke();
+
+        /* normal data particle */
+        if(!isThreat&&!isBlock&&d<120&&Math.random()<.004){
+          const t=(tick*.013)%1;
+          ctx.beginPath(); ctx.arc(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t,1.8,0,Math.PI*2);
+          ctx.fillStyle='rgba(168,174,192,.42)'; ctx.fill();
+        }
+        /* red threat packet — faster after threatAge grows */
+        if(isThreat){
+          const sp=0.6+(a.threatAge||b.threatAge||1)/120*.8;
+          const t=((tick*.02*sp)%1);
+          ctx.beginPath(); ctx.arc(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t,3,0,Math.PI*2);
+          ctx.fillStyle='rgba(184,28,41,.85)'; ctx.fill();
+        }
+      }
+    }
+
+    /* ── NODES ── */
+    nodes.forEach(n=>{
+      const p=(Math.sin(n.pulse)+1)*.5;
+
+      /* threat pulse rings */
+      if(n.threat&&!n.blocked){
+        [1.9,2.8,3.7].forEach((m,i)=>{
+          const ringAlpha=((p-i*.28)+1.2)%1;
+          ctx.beginPath(); ctx.arc(n.x,n.y,n.r*m+4,0,Math.PI*2);
+          ctx.strokeStyle=`rgba(184,28,41,${ringAlpha*.18})`; ctx.lineWidth=1; ctx.stroke();
+        });
+      }
+      /* block ring */
+      if(n.blocked){
+        const a2=1-n.blockAge/100;
+        ctx.beginPath(); ctx.arc(n.x,n.y,n.r+11+p*4,0,Math.PI*2);
+        ctx.strokeStyle=`rgba(0,122,104,${a2*.22})`; ctx.lineWidth=1.5; ctx.stroke();
+        ctx.beginPath(); ctx.arc(n.x,n.y,n.r+5,0,Math.PI*2);
+        ctx.strokeStyle=`rgba(0,122,104,${a2*.55})`; ctx.lineWidth=1; ctx.stroke();
+      }
+
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      if(n.blocked){
+        ctx.fillStyle='rgba(0,122,104,.1)'; ctx.fill();
+        ctx.strokeStyle=TEAL; ctx.lineWidth=1.5; ctx.stroke();
+      } else if(n.threat){
+        ctx.fillStyle='rgba(184,28,41,.09)'; ctx.fill();
+        ctx.strokeStyle=RED; ctx.lineWidth=1.6; ctx.stroke();
+        /* pulsing inner core */
+        ctx.beginPath(); ctx.arc(n.x,n.y,n.r*.42+p*.7,0,Math.PI*2);
+        ctx.fillStyle=`rgba(184,28,41,${.38+p*.62})`; ctx.fill();
+      } else {
+        const fill  = n.type==='server'?'#EAEAEF':n.type==='device'?'#F0F1F5':'#F6F7FA';
+        const stroke= n.type==='server'?'#B2B6C4':n.type==='device'?'#CDD0DA':'#DDDFE8';
+        ctx.fillStyle=fill; ctx.fill();
+        ctx.strokeStyle=stroke; ctx.lineWidth=.9; ctx.stroke();
+        if(n.type==='server'){
+          ctx.beginPath(); ctx.arc(n.x,n.y,3.6,0,Math.PI*2);
+          ctx.fillStyle=DARK+'88'; ctx.fill();
+        }
+      }
+
+      /* inline node labels (short-lived) */
+      if(n.blocked&&n.blockAge<45){
+        const a2=Math.min(1,n.blockAge/8)*(1-n.blockAge/45);
+        ctx.save(); ctx.globalAlpha=a2;
+        ctx.fillStyle=TEAL;
+        ctx.font='600 10px "JetBrains Mono",monospace';
+        ctx.textAlign='center';
+        ctx.fillText('BLOCKED', n.x, n.y-n.r-10);
+        ctx.restore();
+      }
+      if(n.threat&&!n.blocked&&n.threatAge<35){
+        const a2=Math.min(1,n.threatAge/7)*(1-n.threatAge/35)*.9;
+        ctx.save(); ctx.globalAlpha=a2;
+        ctx.fillStyle=RED;
+        ctx.font='600 10px "JetBrains Mono",monospace';
+        ctx.textAlign='center';
+        ctx.fillText('THREAT', n.x, n.y-n.r-10);
+        ctx.restore();
+      }
+    });
+
+    /* ── FLOATING BLOCKED LABELS ── */
+    floatLabels.forEach(lbl=>{
+      const progress=lbl.age/lbl.maxAge;
+      const alpha=(1-progress)*Math.min(1,lbl.age/10);
+      const scale=0.85+progress*.25;
+      ctx.save();
+      ctx.globalAlpha=alpha;
+      ctx.font=`700 ${11*scale}px "JetBrains Mono",monospace`;
+      ctx.textAlign='center';
+      /* pill background */
+      const tw=ctx.measureText(lbl.text).width+16;
+      const th=16*scale;
+      ctx.fillStyle=lbl.color==='#007A68'?'rgba(0,122,104,0.12)':'rgba(184,28,41,0.1)';
+      ctx.beginPath();
+      ctx.roundRect(lbl.x-tw/2, lbl.y-th*.7, tw, th, th/2);
+      ctx.fill();
+      ctx.fillStyle=lbl.color;
+      ctx.fillText(lbl.text, lbl.x, lbl.y+2);
+      ctx.restore();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* seed initial feed */
+  setTimeout(()=>addFeed('142.251.143.106',true),300);
+  setTimeout(()=>addFeed('10.0.0.50',false),700);
+  setTimeout(()=>addFeed('172.64.146.215',true),1100);
+
+  /* seed initial threats */
+  setTimeout(()=>spawnThreat(),500);
+  setTimeout(()=>spawnThreat(),1100);
+  setTimeout(()=>spawnThreat(),1700);
+
+  draw();
+})();
+
+</script>
+</body>
+</html>
