@@ -1,0 +1,25 @@
+{
+  "total_alerts": 45,
+  "critical_alerts": 6,
+  "blocked_ips": 12,
+  "recent_alerts": [
+    {
+      "time": "20:14",
+      "source_ip": "185.23.66.12",
+      "severity": "High",
+      "description": "Port scan detected"
+    },
+    {
+      "time": "20:11",
+      "source_ip": "91.211.54.77",
+      "severity": "Critical",
+      "description": "Brute force attack blocked"
+    },
+    {
+      "time": "20:08",
+      "source_ip": "172.16.1.44",
+      "severity": "Medium",
+      "description": "Suspicious traffic pattern"
+    }
+  ]
+}
